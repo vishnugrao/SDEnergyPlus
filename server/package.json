@@ -4,8 +4,8 @@
   "main": "server.ts",
   "type": "module",
   "scripts": {
-    "start": "ts-node --esm server.ts",
-    "dev": "ts-node --esm server.ts",
+    "start": "tsx --env-file=./config.env server.ts",
+    "dev": "tsx --env-file=./config.env server.ts",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,6 +21,10 @@
     "mongodb": "^6.16.0"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.18"
+    "@types/cors": "^2.8.18",
+    "@types/node": "^22.15.29",
+    "tsx": "^4.7.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }

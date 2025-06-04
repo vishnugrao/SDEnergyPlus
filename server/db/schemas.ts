@@ -1,6 +1,6 @@
 import { ObjectId } from 'mongodb';
 
-export interface BuildingDesign {
+interface BuildingDesign {
     _id?: ObjectId;
     name: string;
     facades: {
@@ -17,14 +17,14 @@ export interface BuildingDesign {
     updatedAt: Date;
 }
 
-export interface FacadeData {
+interface FacadeData {
     height: number;
     width: number;
     wwr: number; // Window-to-wall ratio (0-1)
     shgc: number; // Solar Heat Gain Coefficient (0-1)
 }
 
-export interface AnalysisResult {
+interface AnalysisResult {
     _id?: ObjectId;
     buildingDesignId: ObjectId;
     city: string;
@@ -40,7 +40,7 @@ export interface AnalysisResult {
     createdAt: Date;
 }
 
-export interface CityData {
+interface CityData {
     _id?: ObjectId;
     name: string;
     solarRadiation: {
@@ -52,3 +52,5 @@ export interface CityData {
     };
     electricityRate: number; // Rs/kWh
 } 
+
+export type { BuildingDesign, FacadeData, CityData, AnalysisResult };
