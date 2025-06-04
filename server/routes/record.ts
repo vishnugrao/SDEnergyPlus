@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
     let collection = await db.collection("records");
-    let query = { _id: new ObjectId(req.params.id) };
+    let query = { _id: ObjectId.createFromHexString(req.params.id) };
     let result = await collection.findOne(query);
 
     if (!result) {
@@ -44,7 +44,7 @@ router.post("/", async (req, res) => {
 
 router.patch("/", async (req, res) => {
     try {
-        const query = { _id: new ObjectId(req.params.id) };
+        const query = { _id: ObjectId.createFromHexString(req.params.id) };
         const updates = {
             $set: {
                 name: req.body.name,
@@ -65,7 +65,7 @@ router.patch("/", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
     try {
-        const query = { _id: new ObjectId(req.params.id) };
+        const query = { _id: ObjectId.createFromHexString(req.params.id) };
         const collection = db.collection("records");
         let result = await collection.deleteOne(query);
         res.send(result).status(200);
