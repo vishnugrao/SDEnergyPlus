@@ -1,9 +1,10 @@
 import express from "express";
+import type { Express } from "express";
 import cors from "cors";
 import records from "./routes/record.ts";
 
 const PORT = process.env.PORT || 5050;
-const app = express();
+const app: Express = express();
 
 app.use(cors());
 app.use(express.json());
