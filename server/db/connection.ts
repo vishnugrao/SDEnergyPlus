@@ -1,6 +1,6 @@
-import { MongoClient, ServerApiVersion } from "mongodb";
+import { MongoClient, ServerApiVersion, Db } from "mongodb";
 
-const uri = process.env.ATLAS_URI || "";
+const uri = process.env.ATLAS_URI || "mongodb://localhost:27017";
 const client = new MongoClient(uri, {
     serverApi: {
         version: ServerApiVersion.v1,
@@ -9,17 +9,16 @@ const client = new MongoClient(uri, {
     },
 });
 
+let db: Db;
+
 try {
     await client.connect();
     await client.db('admin').command({ ping: 1 });
-    console.log(
-        "Pinged your deployment. You succesfully connected to MongoDB!"
-    );
-}
-catch(err) {
-    console.error(err);
+    console.log("Successfully connected to MongoDB!");
+    db = client.db('smarterDharma'); // Using a more appropriate database name
+} catch(err) {
+    console.error("Failed to connect to MongoDB:", err);
+    process.exit(1); // Exit if we can't connect to the database
 }
 
-let db = client.db('employees');
-
-export default db;
+export { db };

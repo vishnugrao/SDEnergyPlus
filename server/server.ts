@@ -1,14 +1,33 @@
 import express from "express";
 import type { Express } from "express";
 import cors from "cors";
-import records from "./routes/record.ts";
+import Redis from "ioredis";
+import buildingDesigns from "./routes/buildingDesigns.ts";
+import analysis from "./routes/analysis.ts";
 
 const PORT = process.env.PORT || 5050;
 const app: Express = express();
 
+// Initialize Redis client
+const redis = new (Redis as any)(process.env.REDIS_URL || "redis://localhost:6379");
+
+// Middleware
 app.use(cors());
 app.use(express.json());
-app.use('/record', records);
+
+// Redis error handling
+redis.on("error", (error: Error) => {
+    console.error("Redis error:", error);
+});
+
+// Routes
+app.use('/building-designs', buildingDesigns);
+app.use('/analysis', analysis);
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+    res.json({ status: 'healthy' });
+});
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);

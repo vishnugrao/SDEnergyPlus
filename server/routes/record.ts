@@ -1,6 +1,6 @@
-import express from "express";
+import express, { Request } from "express";
 
-import db from "../db/connection.ts";
+import { db } from "../db/connection.ts";
 
 import { ObjectId } from "mongodb";
 
@@ -42,7 +42,7 @@ router.post("/", async (req, res) => {
     }
 });
 
-router.patch("/", async (req, res) => {
+router.patch("/:id", async (req: Request<{ id: string }>, res) => {
     try {
         const query = { _id: ObjectId.createFromHexString(req.params.id) };
         const updates = {
