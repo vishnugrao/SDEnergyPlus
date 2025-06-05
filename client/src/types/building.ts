@@ -1,7 +1,12 @@
-import { ObjectId } from 'mongodb';
+export interface FacadeData {
+    height: number;
+    width: number;
+    wwr: number; // Window-to-wall ratio (0-1)
+    shgc: number; // Solar Heat Gain Coefficient (0-1)
+}
 
-interface BuildingDesign {
-    _id?: ObjectId;
+export interface BuildingDesign {
+    _id?: string;
     buildingId?: string; // ID of the parent building for grouping designs
     name: string;
     facades: {
@@ -14,20 +19,13 @@ interface BuildingDesign {
         width: number;
         length: number;
     };
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt?: Date;
+    updatedAt?: Date;
 }
 
-interface FacadeData {
-    height: number;
-    width: number;
-    wwr: number; // Window-to-wall ratio (0-1)
-    shgc: number; // Solar Heat Gain Coefficient (0-1)
-}
-
-interface AnalysisResult {
-    _id?: ObjectId;
-    buildingDesignId: ObjectId;
+export interface AnalysisResult {
+    _id?: string;
+    buildingDesignId: string;
     city: string;
     heatGain: {
         north: number;
@@ -41,8 +39,8 @@ interface AnalysisResult {
     createdAt: Date;
 }
 
-interface CityData {
-    _id?: ObjectId;
+export interface CityData {
+    _id?: string;
     name: string;
     solarRadiation: {
         north: number;
@@ -53,5 +51,3 @@ interface CityData {
     };
     electricityRate: number; // Rs/kWh
 } 
-
-export type { BuildingDesign, FacadeData, CityData, AnalysisResult };

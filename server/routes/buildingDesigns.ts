@@ -8,7 +8,9 @@ const router = Router();
 // Get all building designs
 router.get('/', async (req: Request, res: Response) => {
     try {
-        const designs = await db.collection<BuildingDesign>('buildingDesigns').find().toArray();
+        const { buildingId } = req.query;
+        const query = buildingId ? { buildingId } : {};
+        const designs = await db.collection<BuildingDesign>('buildingDesigns').find(query).toArray();
         res.json(designs);
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch building designs' });
@@ -35,6 +37,7 @@ router.post('/', async (req: Request, res: Response) => {
     try {
         const design: BuildingDesign = {
             ...req.body,
+            buildingId: req.body.buildingId || req.body._id, // Use _id as buildingId if not provided
             createdAt: new Date(),
             updatedAt: new Date()
         };
@@ -79,5 +82,15 @@ router.delete('/:id', (async (req, res) => {
         res.status(500).json({ error: 'Failed to delete building design' });
     }
 }) as RequestHandler<{ id: string }>);
+
+// Clear all building designs
+router.delete('/', async (req: Request, res: Response) => {
+    try {
+        await db.collection<BuildingDesign>('buildingDesigns').deleteMany({});
+        res.json({ message: 'All building designs cleared successfully' });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to clear building designs' });
+    }
+});
 
 export default router; 

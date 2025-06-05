@@ -1,7 +1,11 @@
 'use client'
 
-import { App } from '@/components/App'
+import { BuildingDashboard } from '@/components/BuildingDashboard';
 
 export default function Home() {
-  return <App />
+    return (
+        <main className="container mx-auto py-8">
+            <BuildingDashboard />
+        </main>
+    );
 } 
