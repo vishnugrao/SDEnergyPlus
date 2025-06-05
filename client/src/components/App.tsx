@@ -1,9 +1,11 @@
+'use client'
+
 import { useState, useEffect } from 'react';
-import { BuildingConfigForm } from './components/BuildingConfigForm';
-import { AnalysisDashboard } from './components/AnalysisDashboard';
+import { BuildingConfigForm } from './BuildingConfigForm';
+import { AnalysisDashboard } from './AnalysisDashboard';
 import { Toaster } from 'sonner';
-import { Card, CardContent, CardHeader, CardTitle } from './components/ui/card';
-import { Button } from './components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Button } from './ui/button';
 import { toast } from 'sonner';
 
 interface BuildingDesign {
@@ -21,7 +23,7 @@ interface BuildingDesign {
     };
 }
 
-function App() {
+export function App() {
     const [buildingDesigns, setBuildingDesigns] = useState<BuildingDesign[]>([]);
     const [selectedDesign, setSelectedDesign] = useState<string | null>(null);
 
@@ -74,6 +76,4 @@ function App() {
             </div>
         </div>
     );
-}
-
-export default App;
+} 

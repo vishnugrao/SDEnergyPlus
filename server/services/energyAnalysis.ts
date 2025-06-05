@@ -1,7 +1,10 @@
 import { BuildingDesign, AnalysisResult, CityData } from '../db/schemas.ts';
+import { redisService } from './redis.js';
+import { logger } from '../utils/logger.js';
 
 const COP = 4; // Coefficient of Performance
 const BTUs_TO_KWH = 3412; // Conversion factor
+const CACHE_PREFIX = 'energy_analysis:';
 
 export class EnergyAnalysisService {
     // Calculate heat gain for a single facade
@@ -46,20 +49,61 @@ export class EnergyAnalysisService {
         return energyConsumption * electricityRate;
     }
 
-    // Main analysis function
-    public analyzeBuilding(building: BuildingDesign, cityData: CityData): AnalysisResult {
-        const heatGain = this.calculateTotalHeatGain(building, cityData);
-        const coolingLoad = this.calculateCoolingLoad(heatGain.total);
-        const energyConsumption = this.calculateEnergyConsumption(coolingLoad);
-        const coolingCost = this.calculateCoolingCost(energyConsumption, cityData.electricityRate);
+    // Get cache key for analysis result
+    private getCacheKey(buildingId: string, cityName: string): string {
+        return `${CACHE_PREFIX}${buildingId}:${cityName}`;
+    }
 
-        return {
-            buildingDesignId: building._id!,
-            city: cityData.name,
-            heatGain,
-            coolingCost,
-            energyConsumption,
-            createdAt: new Date()
-        };
+    // Main analysis function
+    public async analyzeBuilding(building: BuildingDesign, cityData: CityData): Promise<AnalysisResult> {
+        try {
+            // Try to get from cache first
+            const cacheKey = this.getCacheKey(building._id!.toString(), cityData.name);
+            const cachedResult = await redisService.get<AnalysisResult>(cacheKey);
+
+            if (cachedResult) {
+                logger.info('Retrieved analysis result from cache');
+                return cachedResult;
+            }
+
+            // Calculate if not in cache
+            const heatGain = this.calculateTotalHeatGain(building, cityData);
+            const coolingLoad = this.calculateCoolingLoad(heatGain.total);
+            const energyConsumption = this.calculateEnergyConsumption(coolingLoad);
+            const coolingCost = this.calculateCoolingCost(energyConsumption, cityData.electricityRate);
+
+            const result: AnalysisResult = {
+                buildingDesignId: building._id!,
+                city: cityData.name,
+                heatGain,
+                coolingCost,
+                energyConsumption,
+                createdAt: new Date()
+            };
+
+            // Cache the result
+            await redisService.set(cacheKey, result);
+            logger.info('Cached new analysis result');
+
+            return result;
+        } catch (error) {
+            logger.error('Error in analyzeBuilding:', error);
+            throw error;
+        }
+    }
+
+    // Invalidate cache for a building design
+    public async invalidateCache(buildingId: string): Promise<void> {
+        try {
+            const pattern = `${CACHE_PREFIX}${buildingId}:*`;
+            const keys = await redisService.keys(pattern);
+            if (keys.length > 0) {
+                await redisService.delMultiple(keys);
+                logger.info(`Invalidated cache for building ${buildingId}`);
+            }
+        } catch (error) {
+            logger.error('Error invalidating cache:', error);
+            throw error;
+        }
     }
 } 
