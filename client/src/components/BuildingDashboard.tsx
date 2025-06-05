@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
-import { Plus, Building2, Home } from 'lucide-react';
+import { Plus, Building2, Home, BarChart2 } from 'lucide-react';
 import { BuildingDesign } from '@/types/building';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
@@ -67,6 +67,10 @@ export function BuildingDashboard() {
         router.push(`/building/${buildingId}/compare`);
     };
 
+    const handleViewAnalysis = (buildingId: string) => {
+        router.push(`/building/${buildingId}/analysis`);
+    };
+
     if (loading) {
         return <div className="text-center py-8">Loading buildings...</div>;
     }
@@ -83,7 +87,11 @@ export function BuildingDashboard() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {buildingGroups.map((group) => (
-                    <Card key={group.buildingId}>
+                    <Card 
+                        key={group.buildingId}
+                        className="hover:shadow-lg transition-shadow cursor-pointer"
+                        onClick={() => handleViewAnalysis(group.buildingId)}
+                    >
                         <CardHeader>
                             <CardTitle className="flex items-center gap-2">
                                 {group.name.includes('Commercial') ? (
@@ -102,15 +110,31 @@ export function BuildingDashboard() {
                                 <div className="text-sm">
                                     {group.designs.length} design{group.designs.length !== 1 ? 's' : ''}
                                 </div>
-                                {group.designs.length > 1 && (
+                                <div className="flex gap-2">
                                     <Button
                                         variant="outline"
                                         className="w-full"
-                                        onClick={() => handleCompareDesigns(group.buildingId)}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleViewAnalysis(group.buildingId);
+                                        }}
                                     >
-                                        Compare Designs
+                                        <BarChart2 className="h-4 w-4 mr-2" />
+                                        View Analysis
                                     </Button>
-                                )}
+                                    {group.designs.length > 1 && (
+                                        <Button
+                                            variant="outline"
+                                            className="w-full"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleCompareDesigns(group.buildingId);
+                                            }}
+                                        >
+                                            Compare Designs
+                                        </Button>
+                                    )}
+                                </div>
                             </div>
                         </CardContent>
                     </Card>

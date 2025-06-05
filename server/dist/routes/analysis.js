@@ -1,9 +1,23 @@
 import { Router } from 'express';
 import { ObjectId } from 'mongodb';
-import { db } from '../db/connection.ts';
-import { EnergyAnalysisService } from '../services/energyAnalysis.ts';
+import { db } from '../db/connection.js';
+import { EnergyAnalysisService } from '../services/energyAnalysis.js';
 const router = Router();
 const energyAnalysisService = new EnergyAnalysisService();
+// Get analysis results for a building
+router.get('/:buildingId', (async (req, res) => {
+    try {
+        const { buildingId } = req.params;
+        const results = await db.collection('analysisResults')
+            .find({ buildingDesignId: new ObjectId(buildingId) })
+            .sort({ createdAt: -1 })
+            .toArray();
+        res.json(results);
+    }
+    catch (error) {
+        res.status(500).json({ error: 'Failed to fetch analysis results' });
+    }
+}));
 // Analyze a building design for a specific city
 router.post('/analyze', (async (req, res) => {
     try {
@@ -32,18 +46,6 @@ router.post('/analyze', (async (req, res) => {
         res.status(500).json({ error: 'Failed to perform energy analysis' });
     }
 }));
-// Get analysis results for a building design
-router.get('/building/:buildingDesignId', async (req, res) => {
-    try {
-        const results = await db.collection('analysisResults')
-            .find({ buildingDesignId: new ObjectId(req.params.buildingDesignId) })
-            .toArray();
-        res.json(results);
-    }
-    catch (error) {
-        res.status(500).json({ error: 'Failed to fetch analysis results' });
-    }
-});
 // Compare analysis results between two building designs
 router.get('/compare/:design1Id/:design2Id', async (req, res) => {
     try {
@@ -65,3 +67,4 @@ router.get('/compare/:design1Id/:design2Id', async (req, res) => {
     }
 });
 export default router;
+//# sourceMappingURL=analysis.js.map

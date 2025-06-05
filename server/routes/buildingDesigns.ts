@@ -1,7 +1,7 @@
 import { Router, Request, Response, RequestHandler } from 'express';
 import { ObjectId } from 'mongodb';
-import { db } from '../db/connection.ts';
-import { BuildingDesign } from '../db/schemas.ts';
+import { db } from '../db/connection.js';
+import { BuildingDesign } from '../db/schemas.js';
 
 const router = Router();
 

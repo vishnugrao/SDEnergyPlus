@@ -1,28 +1,20 @@
-import { BuildingDesign, AnalysisResult, CityData } from '../db/schemas.ts';
 import { redisService } from './redis.js';
 import { logger } from '../utils/logger.js';
-
 const COP = 4; // Coefficient of Performance
 const BTUs_TO_KWH = 3412; // Conversion factor
 const CACHE_PREFIX = 'energy_analysis:';
-
 export class EnergyAnalysisService {
+    constructor() {
+        this.COP = 4; // Default Coefficient of Performance
+        this.EXPOSURE_DURATION = 1; // 1 hour for calculations
+    }
     // Calculate heat gain for a single facade
-    private calculateFacadeHeatGain(
-        facade: BuildingDesign['facades'][keyof BuildingDesign['facades']],
-        solarRadiation: number,
-        hours: number = 1
-    ): number {
-        // Q = A × SHGC × G × Δt
+    calculateFacadeHeatGain(facade, solarRadiation, hours = 1) {
         const windowArea = facade.height * facade.width * facade.wwr;
         return windowArea * facade.shgc * solarRadiation * hours;
     }
-
     // Calculate total heat gain for a building
-    private calculateTotalHeatGain(
-        building: BuildingDesign,
-        cityData: CityData
-    ): AnalysisResult['heatGain'] {
+    calculateTotalHeatGain(building, cityData) {
         const heatGain = {
             north: this.calculateFacadeHeatGain(building.facades.north, cityData.solarRadiation.north),
             south: this.calculateFacadeHeatGain(building.facades.south, cityData.solarRadiation.south),
@@ -30,66 +22,66 @@ export class EnergyAnalysisService {
             west: this.calculateFacadeHeatGain(building.facades.west, cityData.solarRadiation.west),
             total: 0
         };
-
         heatGain.total = heatGain.north + heatGain.south + heatGain.east + heatGain.west;
+        // Add skylight heat gain if present
+        if (building.skylight) {
+            const skylightArea = building.skylight.width * building.skylight.length;
+            const skylightHeatGain = this.calculateSkylightHeatGain(skylightArea, cityData.solarRadiation.roof);
+            heatGain.total += skylightHeatGain;
+        }
         return heatGain;
     }
-
     // Calculate cooling load in kWh
-    private calculateCoolingLoad(heatGainBTU: number): number {
-        // Cooling Load (kWh) = Heat Gain (BTU) / 3,412
+    calculateCoolingLoad(heatGainBTU) {
         return heatGainBTU / BTUs_TO_KWH;
     }
-
     // Calculate energy consumption
-    private calculateEnergyConsumption(coolingLoad: number): number {
-        // Energy Consumed (kWh) = Cooling Load (kWh) / COP
-        return coolingLoad / COP;
+    calculateEnergyConsumption(coolingLoad) {
+        return coolingLoad / this.COP;
     }
-
     // Calculate cooling cost
-    private calculateCoolingCost(energyConsumption: number, electricityRate: number): number {
+    calculateCoolingCost(energyConsumption, electricityRate) {
         return energyConsumption * electricityRate;
     }
-
+    // Get cache key for analysis result
+    getCacheKey(buildingId, cityName) {
+        return `${CACHE_PREFIX}${buildingId}:${cityName}`;
+    }
     // Main analysis function
-    public async analyzeBuilding(building: BuildingDesign, cityData: CityData): Promise<AnalysisResult> {
+    async analyzeBuilding(building, cityData) {
         try {
-            const cacheKey = `${CACHE_PREFIX}${building._id}:${cityData.name}`;
+            // Try to get from cache first
+            const cacheKey = this.getCacheKey(building._id.toString(), cityData.name);
             const cachedResult = await redisService.get(cacheKey);
             if (cachedResult) {
                 logger.info('Retrieved analysis result from cache');
                 return cachedResult;
             }
-
             // Calculate if not in cache
             const heatGain = this.calculateTotalHeatGain(building, cityData);
             const coolingLoad = this.calculateCoolingLoad(heatGain.total);
             const energyConsumption = this.calculateEnergyConsumption(coolingLoad);
             const coolingCost = this.calculateCoolingCost(energyConsumption, cityData.electricityRate);
-
-            const result: AnalysisResult = {
-                buildingDesignId: building._id!,
+            const result = {
+                buildingDesignId: building._id,
                 city: cityData.name,
                 heatGain,
                 coolingCost,
                 energyConsumption,
                 createdAt: new Date()
             };
-
             // Cache the result
             await redisService.set(cacheKey, result);
             logger.info('Cached new analysis result');
-
             return result;
-        } catch (error) {
+        }
+        catch (error) {
             logger.error('Error in analyzeBuilding:', error);
             throw error;
         }
     }
-
     // Invalidate cache for a building design
-    public async invalidateCache(buildingId: string): Promise<void> {
+    async invalidateCache(buildingId) {
         try {
             const pattern = `${CACHE_PREFIX}${buildingId}:*`;
             const keys = await redisService.keys(pattern);
@@ -97,9 +89,15 @@ export class EnergyAnalysisService {
                 await redisService.delMultiple(keys);
                 logger.info(`Invalidated cache for building ${buildingId}`);
             }
-        } catch (error) {
+        }
+        catch (error) {
             logger.error('Error invalidating cache:', error);
             throw error;
         }
     }
-} 
+    calculateSkylightHeatGain(area, solarRadiation) {
+        // Using a default SHGC of 0.8 for skylights
+        return area * 0.8 * solarRadiation * this.EXPOSURE_DURATION;
+    }
+}
+//# sourceMappingURL=energyAnalysis.js.map
