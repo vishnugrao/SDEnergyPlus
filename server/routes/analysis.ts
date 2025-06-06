@@ -2,77 +2,126 @@ import { Router, Request, Response, RequestHandler } from 'express';
 import { ObjectId } from 'mongodb';
 import { db } from '../db/connection.ts';
 import { EnergyAnalysisService } from '../services/energyAnalysis.ts';
-import { BuildingDesign, CityData } from '../db/schemas.ts';
+import { BuildingDesign, CityData, AnalysisResult } from '../db/schemas.ts';
+import { logger } from '../utils/logger.ts';
+import { redisService } from '../services/redis.ts';
 
 const router = Router();
 const energyAnalysisService = new EnergyAnalysisService();
 
-// Analyze a building design for a specific city
-router.post('/analyze', (async (req, res) => {
+// Validate city data structure
+function validateCityData(cityData: any): cityData is CityData {
+    if (!cityData || typeof cityData !== 'object') {
+        return false;
+    }
+
+    if (!cityData.name || typeof cityData.name !== 'string') {
+        return false;
+    }
+
+    if (!cityData.solarRadiation || typeof cityData.solarRadiation !== 'object') {
+        return false;
+    }
+
+    const requiredRadiation = ['north', 'south', 'east', 'west', 'roof'];
+    for (const direction of requiredRadiation) {
+        if (typeof cityData.solarRadiation[direction] !== 'number') {
+            return false;
+        }
+    }
+
+    if (typeof cityData.electricityRate !== 'number') {
+        return false;
+    }
+
+    return true;
+}
+
+// Get analysis results for multiple building designs across all cities
+router.get('/buildings', (async (req: Request, res: Response) => {
     try {
-        const { buildingDesignId, cityName } = req.body;
+        const { ids } = req.query;
+        
+        logger.info('Fetching analysis for buildings across all cities');
 
-        // Fetch building design
-        const buildingDesign = await db.collection('buildingDesigns').findOne({
-            _id: new ObjectId(buildingDesignId)
-        }) as BuildingDesign | null;
+        let buildingIds: ObjectId[];
+        if (ids) {
+            buildingIds = (ids as string).split(',').map(id => new ObjectId(id));
+        } else {
+            // If no IDs provided, get all buildings
+            const allBuildings = await db.collection('buildingDesigns').find({}).toArray();
+            buildingIds = allBuildings.map(b => b._id);
+        }
+        
+        // Fetch all building designs
+        const buildingDesigns = await db.collection('buildingDesigns')
+            .find({ _id: { $in: buildingIds } })
+            .toArray() as BuildingDesign[];
 
-        if (!buildingDesign) {
-            return res.status(404).json({ error: 'Building design not found' });
+        logger.info(`Found building designs: ${buildingDesigns.length}`);
+
+        if (buildingDesigns.length === 0) {
+            return res.status(404).json({ error: 'No building designs found' });
         }
 
-        // Fetch city data
-        const cityData = await db.collection('cityData').findOne({
-            name: cityName
-        }) as CityData | null;
-
-        if (!cityData) {
-            return res.status(404).json({ error: 'City data not found' });
+        // Fetch all city data
+        const allCityData = await db.collection('cityData').find({}).toArray() as CityData[];
+        
+        if (allCityData.length === 0) {
+            return res.status(404).json({ error: 'No city data found' });
         }
 
-        // Perform analysis
-        const analysisResult = energyAnalysisService.analyzeBuilding(buildingDesign, cityData);
+        // Validate all city data
+        for (const cityData of allCityData) {
+            if (!validateCityData(cityData)) {
+                logger.error('Invalid city data structure:', JSON.stringify(cityData, null, 2));
+                return res.status(500).json({ error: 'Invalid city data structure' });
+            }
+        }
 
-        // Save analysis result
-        const result = await db.collection('analysisResults').insertOne(analysisResult);
+        // Perform analysis for each building in each city with caching
+        const analysisResults = await Promise.all(
+            buildingDesigns.flatMap(design => 
+                allCityData.map(async cityData => {
+                    try {
+                        // Try to get from cache first
+                        const cacheKey = `analysis:${design._id}:${cityData.name}`;
+                        const cachedResult = await redisService.get<AnalysisResult>(cacheKey);
+                        
+                        if (cachedResult) {
+                            logger.info(`Retrieved analysis result from cache for building ${design.name} in city ${cityData.name}`);
+                            return cachedResult;
+                        }
 
-        res.status(201).json({ ...analysisResult, _id: result.insertedId });
+                        // If not in cache, perform analysis
+                        logger.info(`Analyzing building: ${design.name} for city: ${cityData.name}`);
+                        const result = energyAnalysisService.analyzeBuilding(design, cityData);
+                        
+                        // Cache the result
+                        await redisService.set(cacheKey, result);
+                        
+                        return result;
+                    } catch (error) {
+                        logger.error(`Error analyzing building ${design.name} for city ${cityData.name}:`, error);
+                        throw error;
+                    }
+                })
+            )
+        );
+
+        // Sort results by energy efficiency (lower energy consumption is better)
+        analysisResults.sort((a, b) => a.energyConsumption - b.energyConsumption);
+
+        logger.info(`Analysis completed for ${analysisResults.length} building-city combinations`);
+
+        res.json(analysisResults);
     } catch (error) {
-        res.status(500).json({ error: 'Failed to perform energy analysis' });
+        logger.error('Error in /buildings endpoint:', error);
+        res.status(500).json({ 
+            error: 'Failed to analyze buildings',
+            details: error instanceof Error ? error.message : 'Unknown error'
+        });
     }
 }) as RequestHandler);
-
-// Get analysis results for a building design
-router.get('/building/:buildingDesignId', async (req: Request<{ buildingDesignId: string }>, res: Response) => {
-    try {
-        const results = await db.collection('analysisResults')
-            .find({ buildingDesignId: new ObjectId(req.params.buildingDesignId) })
-            .toArray();
-        res.json(results);
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to fetch analysis results' });
-    }
-});
-
-// Compare analysis results between two building designs
-router.get('/compare/:design1Id/:design2Id', async (req: Request<{ design1Id: string; design2Id: string }>, res: Response) => {
-    try {
-        const [results1, results2] = await Promise.all([
-            db.collection('analysisResults')
-                .find({ buildingDesignId: new ObjectId(req.params.design1Id) })
-                .toArray(),
-            db.collection('analysisResults')
-                .find({ buildingDesignId: new ObjectId(req.params.design2Id) })
-                .toArray()
-        ]);
-
-        res.json({
-            design1: results1,
-            design2: results2
-        });
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to compare analysis results' });
-    }
-});
 
 export default router; 

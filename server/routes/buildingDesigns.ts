@@ -2,8 +2,28 @@ import { Router, Request, Response, RequestHandler } from 'express';
 import { ObjectId } from 'mongodb';
 import { db } from '../db/connection.js';
 import { BuildingDesign } from '../db/schemas.js';
+import { logger } from '../utils/logger.js';
 
 const router = Router();
+
+// Validate building design data
+function validateBuildingDesign(design: Partial<BuildingDesign>): void {
+    if (!design.facades) {
+        throw new Error('Building design is missing facades data');
+    }
+
+    const requiredFacades = ['north', 'south', 'east', 'west'];
+    for (const facade of requiredFacades) {
+        if (!design.facades[facade as keyof typeof design.facades]) {
+            throw new Error(`Building design is missing ${facade} facade data`);
+        }
+
+        const facadeData = design.facades[facade as keyof typeof design.facades];
+        if (!facadeData.height || !facadeData.width || !facadeData.wwr || !facadeData.shgc) {
+            throw new Error(`${facade} facade is missing required properties (height, width, wwr, or shgc)`);
+        }
+    }
+}
 
 // Get all building designs
 router.get('/', async (req: Request, res: Response) => {
@@ -13,6 +33,7 @@ router.get('/', async (req: Request, res: Response) => {
         const designs = await db.collection<BuildingDesign>('buildingDesigns').find(query).toArray();
         res.json(designs);
     } catch (error) {
+        logger.error('Failed to fetch building designs:', error);
         res.status(500).json({ error: 'Failed to fetch building designs' });
     }
 });
@@ -28,6 +49,7 @@ router.get('/:id', (async (req, res) => {
         }
         res.json(design);
     } catch (error) {
+        logger.error('Failed to fetch building design:', error);
         res.status(500).json({ error: 'Failed to fetch building design' });
     }
 }) as RequestHandler<{ id: string }>);
@@ -37,14 +59,20 @@ router.post('/', async (req: Request, res: Response) => {
     try {
         const design: BuildingDesign = {
             ...req.body,
-            buildingId: req.body.buildingId || req.body._id, // Use _id as buildingId if not provided
+            buildingId: req.body.buildingId || req.body._id,
             createdAt: new Date(),
             updatedAt: new Date()
         };
+
+        // Validate the design data
+        validateBuildingDesign(design);
+
         const result = await db.collection<BuildingDesign>('buildingDesigns').insertOne(design);
         res.status(201).json({ ...design, _id: result.insertedId });
     } catch (error) {
-        res.status(500).json({ error: 'Failed to create building design' });
+        logger.error('Failed to create building design:', error);
+        const errorMessage = error instanceof Error ? error.message : 'Failed to create building design';
+        res.status(400).json({ error: errorMessage });
     }
 });
 
@@ -55,6 +83,12 @@ router.put('/:id', (async (req, res) => {
             ...req.body,
             updatedAt: new Date()
         };
+
+        // Validate the design data if facades are being updated
+        if (design.facades) {
+            validateBuildingDesign(design);
+        }
+
         const result = await db.collection<BuildingDesign>('buildingDesigns').updateOne(
             { _id: new ObjectId(req.params.id) },
             { $set: design }
@@ -64,7 +98,9 @@ router.put('/:id', (async (req, res) => {
         }
         res.json({ message: 'Building design updated successfully' });
     } catch (error) {
-        res.status(500).json({ error: 'Failed to update building design' });
+        logger.error('Failed to update building design:', error);
+        const errorMessage = error instanceof Error ? error.message : 'Failed to update building design';
+        res.status(400).json({ error: errorMessage });
     }
 }) as RequestHandler<{ id: string }>);
 

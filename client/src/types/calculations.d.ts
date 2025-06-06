@@ -1,7 +1,6 @@
 declare module '@/lib/calculations' {
   interface Facade {
-    height: number;
-    width: number;
+    windowArea: number;
     windowToWallRatio: number;
     solarHeatGainCoefficient: number;
   }
@@ -9,6 +8,7 @@ declare module '@/lib/calculations' {
   export function calculateHeatGain(
     facade: Facade,
     city: string,
+    orientation: keyof SolarRadiation,
     season: string,
     hour: number
   ): number;

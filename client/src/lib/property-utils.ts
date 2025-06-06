@@ -16,7 +16,7 @@ function getRandomNumber(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function getRandomDecimal(min: number, max: number, decimals: number = 2): number {
+export function getRandomDecimal(min: number, max: number, decimals: number = 2): number {
     const num = Math.random() * (max - min) + min;
     return Number(num.toFixed(decimals));
 }
