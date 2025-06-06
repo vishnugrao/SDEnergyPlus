@@ -33,6 +33,7 @@ export const CITY_DATA: Record<string, CityData> = {
 };
 
 export const COP = 4; // Coefficient of Performance
+export const BTUs_TO_KWH = 3412; // Conversion factor
 
 export function calculateHeatGain(
   building: BuildingDesign,
@@ -50,14 +51,18 @@ export function calculateHeatGain(
   // Calculate heat gain for each facade based on hour of day
   const hourlyFactors = calculateHourlyFactors(hour);
   
+  // Q = A × SHGC × G × Δt
   const totalHeatGain = Object.entries(windowAreas).reduce((total, [orientation, area]) => {
     const shgc = building.facades[orientation as keyof typeof building.facades].shgc;
     const hourlyFactor = hourlyFactors[orientation as keyof typeof hourlyFactors];
-    return total + (area * shgc * radiation[orientation as keyof SolarRadiation] * hourlyFactor);
+    const solarRadiation = radiation[orientation as keyof SolarRadiation];
+    const duration = 1; // 1 hour
+    return total + (area * shgc * solarRadiation * hourlyFactor * duration);
   }, 0);
 
   // Convert BTU to kWh
-  const coolingLoad = totalHeatGain / 3412;
+  const coolingLoad = totalHeatGain / BTUs_TO_KWH;
+  // Energy Consumed = Cooling Load / COP
   const energyConsumed = coolingLoad / COP;
 
   return Number(energyConsumed.toFixed(2));
@@ -133,7 +138,7 @@ export function calculateDailyEnergyProfile(
   for (let hour = 0; hour < 24; hour++) {
     // Scale radiation by sunlight factor for the hour
     const sunlightFactor = sunlightProfile[hour];
-    // Option 1: Scale all facade radiation by sunlight factor
+    // Scale all facade radiation by sunlight factor
     const scaledRadiation = {
       north: radiation.north * sunlightFactor,
       south: radiation.south * sunlightFactor,

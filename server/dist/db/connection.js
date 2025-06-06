@@ -19,3 +19,4 @@ catch (err) {
     process.exit(1); // Exit if we can't connect to the database
 }
 export { db };
+//# sourceMappingURL=connection.js.map

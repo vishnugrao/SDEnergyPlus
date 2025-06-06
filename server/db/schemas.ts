@@ -28,6 +28,7 @@ interface FacadeData {
 interface AnalysisResult {
     _id?: ObjectId;
     buildingDesignId: ObjectId;
+    name: string;
     city: string;
     heatGain: {
         north: number;
@@ -52,6 +53,16 @@ interface CityData {
         roof: number;
     };
     electricityRate: number; // Rs/kWh
+    temperature: {
+        summer: number;
+        winter: number;
+        monsoon: number;
+    };
+    humidity: {
+        summer: number;
+        winter: number;
+        monsoon: number;
+    };
 } 
 
 export type { BuildingDesign, FacadeData, CityData, AnalysisResult };

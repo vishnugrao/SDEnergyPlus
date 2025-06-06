@@ -10,10 +10,14 @@ import { Label } from './ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { toast } from 'sonner';
 import { useMemento } from '../hooks/useMemento';
-import { BuildingDesign } from '../types/building';
+import { BuildingDesign, BuildingFormData } from '../types/building';
 import { HistoryControls } from './HistoryControls';
 import { StateComparison } from './StateComparison';
-import { generateRandomCommercialProperty, generateRandomResidentialProperty } from '@/lib/property-utils';
+import { generateRandomCommercialProperty, generateRandomResidentialProperty, getRandomDecimal } from '@/lib/property-utils';
+import { BuildingComparison } from './BuildingComparison';
+import { Compass } from './Compass';
+import { FacadeInput } from './FacadeInput';
+import { LoadingSpinner } from './LoadingSpinner';
 
 const facadeSchema = z.object({
     height: z.number().min(0),
@@ -36,12 +40,12 @@ const buildingSchema = z.object({
     }).optional(),
 });
 
-type BuildingFormData = z.infer<typeof buildingSchema>;
 type FacadeKey = keyof BuildingFormData['facades'];
 
-export function BuildingConfigForm() {
+export function BuildingConfigForm({ initialData }: { initialData?: BuildingDesign }) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [showComparison, setShowComparison] = useState(false);
+    const [selectedFacade, setSelectedFacade] = useState<'north' | 'south' | 'east' | 'west'>('north');
     const [comparisonData, setComparisonData] = useState<{
         state1: BuildingDesign;
         state2: BuildingDesign;
@@ -61,22 +65,55 @@ export function BuildingConfigForm() {
         compareStates
     } = useMemento();
 
-    const { register, handleSubmit, formState: { errors }, reset } = useForm<BuildingFormData>({
+    const { register, handleSubmit, formState: { errors }, reset, watch, setValue } = useForm<BuildingFormData>({
         resolver: zodResolver(buildingSchema),
-        defaultValues: currentState || undefined
+        defaultValues: initialData || {
+            name: '',
+            facades: {
+                north: { height: 0, width: 0, wwr: 0.25, shgc: 0.5 },
+                south: { height: 0, width: 0, wwr: 0.4, shgc: 0.3 },
+                east: { height: 0, width: 0, wwr: 0.3, shgc: 0.4 },
+                west: { height: 0, width: 0, wwr: 0.3, shgc: 0.4 }
+            },
+            skylight: { width: 0, length: 0 }
+        }
     });
 
+    // Watch all facade values
+    const facadeValues = watch('facades');
+
+    // Update form values when switching facades
+    const handleFacadeChange = (facade: 'north' | 'south' | 'east' | 'west') => {
+        setSelectedFacade(facade);
+    };
+
+    // Effect to update form values when facade changes
     useEffect(() => {
-        if (currentState) {
-            reset(currentState);
+        const currentValues = facadeValues[selectedFacade];
+        if (currentValues) {
+            setValue(`facades.${selectedFacade}`, currentValues, { shouldDirty: false });
         }
-    }, [currentState, reset]);
+    }, [selectedFacade, facadeValues, setValue]);
+
+    const handleUndo = () => {
+        undo();
+        setShowComparison(false);
+    };
+
+    const handleRedo = () => {
+        redo();
+        setShowComparison(false);
+    };
 
     const onSubmit = async (data: BuildingFormData) => {
         try {
             setIsSubmitting(true);
-            const response = await fetch('http://localhost:5050/building-designs', {
-                method: 'POST',
+            const url = initialData?._id 
+                ? `http://localhost:5050/building-designs/${initialData._id}`
+                : 'http://localhost:5050/building-designs';
+            
+            const response = await fetch(url, {
+                method: initialData?._id ? 'PUT' : 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -84,14 +121,14 @@ export function BuildingConfigForm() {
             });
 
             if (!response.ok) {
-                throw new Error('Failed to save building design');
+                throw new Error(`Failed to ${initialData?._id ? 'update' : 'save'} building design`);
             }
 
             const savedDesign = await response.json();
             saveState(savedDesign);
-            toast.success('Building design saved successfully');
+            toast.success(`Building design ${initialData?._id ? 'updated' : 'saved'} successfully`);
         } catch (error) {
-            toast.error('Failed to save building design');
+            toast.error(`Failed to ${initialData?._id ? 'update' : 'save'} building design`);
             console.error(error);
         } finally {
             setIsSubmitting(false);
@@ -122,34 +159,67 @@ export function BuildingConfigForm() {
             ? generateRandomCommercialProperty()
             : generateRandomResidentialProperty();
 
-        // Map the random values to building form structure
+        // Base dimensions for the building
+        const baseHeight = Number((randomValues.squareFootage / 100).toFixed(1));
+        const baseWidth = Number((randomValues.squareFootage / 100).toFixed(1));
+
+        // Generate unique WWR and SHGC values for each facade
+        const generateFacadeValues = (orientation: 'north' | 'south' | 'east' | 'west') => {
+            // Adjust dimensions based on orientation
+            const heightVariation = getRandomDecimal(-0.1, 0.1, 2);
+            const widthVariation = getRandomDecimal(-0.1, 0.1, 2);
+            const height = Number((baseHeight * (1 + heightVariation)).toFixed(1));
+            const width = Number((baseWidth * (1 + widthVariation)).toFixed(1));
+
+            // Adjust WWR based on orientation
+            let wwrBase;
+            switch (orientation) {
+                case 'south':
+                    wwrBase = 0.4; // South typically has larger windows
+                    break;
+                case 'north':
+                    wwrBase = 0.25; // North typically has smaller windows
+                    break;
+                case 'east':
+                case 'west':
+                    wwrBase = 0.3; // East and west have medium-sized windows
+                    break;
+            }
+            const wwrVariation = getRandomDecimal(-0.05, 0.05, 2);
+            const wwr = Math.min(Math.max(wwrBase + wwrVariation, 0.2), 0.6);
+
+            // Adjust SHGC based on orientation
+            let shgcBase;
+            switch (orientation) {
+                case 'south':
+                    shgcBase = 0.3; // South typically has lower SHGC
+                    break;
+                case 'north':
+                    shgcBase = 0.5; // North typically has higher SHGC
+                    break;
+                case 'east':
+                case 'west':
+                    shgcBase = 0.4; // East and west have medium SHGC
+                    break;
+            }
+            const shgcVariation = getRandomDecimal(-0.05, 0.05, 2);
+            const shgc = Math.min(Math.max(shgcBase + shgcVariation, 0.2), 0.6);
+
+            return {
+                height,
+                width,
+                wwr: Number(wwr.toFixed(2)),
+                shgc: Number(shgc.toFixed(2))
+            };
+        };
+
         const buildingData: BuildingFormData = {
             name: `${type === 'commercial' ? 'Commercial' : 'Residential'} Building ${new Date().toLocaleTimeString()}`,
             facades: {
-                north: {
-                    height: Number((randomValues.squareFootage / 100).toFixed(1)),
-                    width: Number((randomValues.squareFootage / 100).toFixed(1)),
-                    wwr: Number((0.3).toFixed(1)),
-                    shgc: Number((0.4).toFixed(1))
-                },
-                south: {
-                    height: Number((randomValues.squareFootage / 100).toFixed(1)),
-                    width: Number((randomValues.squareFootage / 100).toFixed(1)),
-                    wwr: Number((0.3).toFixed(1)),
-                    shgc: Number((0.4).toFixed(1))
-                },
-                east: {
-                    height: Number((randomValues.squareFootage / 100).toFixed(1)),
-                    width: Number((randomValues.squareFootage / 100).toFixed(1)),
-                    wwr: Number((0.3).toFixed(1)),
-                    shgc: Number((0.4).toFixed(1))
-                },
-                west: {
-                    height: Number((randomValues.squareFootage / 100).toFixed(1)),
-                    width: Number((randomValues.squareFootage / 100).toFixed(1)),
-                    wwr: Number((0.3).toFixed(1)),
-                    shgc: Number((0.4).toFixed(1))
-                }
+                north: generateFacadeValues('north'),
+                south: generateFacadeValues('south'),
+                east: generateFacadeValues('east'),
+                west: generateFacadeValues('west')
             },
             skylight: {
                 width: Number((randomValues.squareFootage / 200).toFixed(1)),
@@ -157,7 +227,6 @@ export function BuildingConfigForm() {
             }
         };
 
-        // Update form with random values
         reset(buildingData);
         toast.success(`Random ${type} values applied`);
     };
@@ -180,69 +249,18 @@ export function BuildingConfigForm() {
         }
     };
 
-    const renderFacadeInputs = (facade: FacadeKey) => {
-        const facadePath = `facades.${facade}` as const;
-        return (
-            <div key={facade} className="space-y-4">
-                <h3 className="font-medium capitalize">{facade} Facade</h3>
-                <div className="grid grid-cols-2 gap-4">
-                    <div>
-                        <Label htmlFor={`${facadePath}.height`}>Height (m)</Label>
-                        <Input
-                            id={`${facadePath}.height`}
-                            type="number"
-                            step="0.1"
-                            {...register(`${facadePath}.height`, { valueAsNumber: true })}
-                            className={errors.facades?.[facade]?.height ? 'border-red-500' : ''}
-                        />
-                    </div>
-                    <div>
-                        <Label htmlFor={`${facadePath}.width`}>Width (m)</Label>
-                        <Input
-                            id={`${facadePath}.width`}
-                            type="number"
-                            step="0.1"
-                            {...register(`${facadePath}.width`, { valueAsNumber: true })}
-                            className={errors.facades?.[facade]?.width ? 'border-red-500' : ''}
-                        />
-                    </div>
-                    <div>
-                        <Label htmlFor={`${facadePath}.wwr`}>Window-to-Wall Ratio</Label>
-                        <Input
-                            id={`${facadePath}.wwr`}
-                            type="number"
-                            step="0.01"
-                            min="0"
-                            max="1"
-                            {...register(`${facadePath}.wwr`, { valueAsNumber: true })}
-                            className={errors.facades?.[facade]?.wwr ? 'border-red-500' : ''}
-                        />
-                    </div>
-                    <div>
-                        <Label htmlFor={`${facadePath}.shgc`}>Solar Heat Gain Coefficient</Label>
-                        <Input
-                            id={`${facadePath}.shgc`}
-                            type="number"
-                            step="0.01"
-                            min="0"
-                            max="1"
-                            {...register(`${facadePath}.shgc`, { valueAsNumber: true })}
-                            className={errors.facades?.[facade]?.shgc ? 'border-red-500' : ''}
-                        />
-                    </div>
-                </div>
-            </div>
-        );
-    };
+    const facadeOrder: Array<'north' | 'east' | 'south' | 'west'> = ['north', 'east', 'south', 'west'];
+    const getNextFacade = (current: typeof facadeOrder[number]) => facadeOrder[(facadeOrder.indexOf(current) + 1) % 4];
+    const getPrevFacade = (current: typeof facadeOrder[number]) => facadeOrder[(facadeOrder.indexOf(current) + 3) % 4];
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-8">
             <Card>
                 <CardHeader>
-                    <CardTitle>Building Configuration</CardTitle>
+                    <CardTitle>{initialData?._id ? 'Edit Building Design' : 'Building Configuration'}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
                         <div>
                             <Label htmlFor="name">Building Name</Label>
                             <Input
@@ -255,15 +273,44 @@ export function BuildingConfigForm() {
                             )}
                         </div>
 
-                        {(['north', 'south', 'east', 'west'] as const).map((facade) => (
-                            <div key={facade}>
-                                {renderFacadeInputs(facade)}
+                        <div className="flex flex-col items-center gap-8 my-8">
+                            <Compass
+                                size={600}
+                                selectedDirection={selectedFacade}
+                                onDirectionClick={handleFacadeChange}
+                            />
+                            <div className="flex items-center gap-8 w-full max-w-2xl">
+                                <Button 
+                                    type="button" 
+                                    variant="outline" 
+                                    onClick={() => handleFacadeChange(getPrevFacade(selectedFacade))}
+                                    className="px-4 py-2"
+                                >
+                                    ◀ Prev
+                                </Button>
+                                <div className="flex-1">
+                                    <FacadeInput
+                                        facade={selectedFacade}
+                                        register={register}
+                                        errors={errors}
+                                        isSelected={true}
+                                        values={facadeValues[selectedFacade]}
+                                    />
+                                </div>
+                                <Button 
+                                    type="button" 
+                                    variant="outline" 
+                                    onClick={() => handleFacadeChange(getNextFacade(selectedFacade))}
+                                    className="px-4 py-2"
+                                >
+                                    Next ▶
+                                </Button>
                             </div>
-                        ))}
+                        </div>
 
                         <div className="space-y-4">
                             <h3 className="font-medium">Skylight (Optional)</h3>
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <Label htmlFor="skylight.width">Width (m)</Label>
                                     <Input
@@ -285,8 +332,15 @@ export function BuildingConfigForm() {
                             </div>
                         </div>
 
-                        <Button type="submit" disabled={isSubmitting}>
-                            {isSubmitting ? 'Saving...' : 'Save Design'}
+                        <Button type="submit" disabled={isSubmitting} className="w-full">
+                            {isSubmitting ? (
+                                <div className="flex items-center gap-2">
+                                    <LoadingSpinner size="sm" />
+                                    <span>{initialData?._id ? 'Updating...' : 'Saving...'}</span>
+                                </div>
+                            ) : (
+                                initialData?._id ? 'Update Design' : 'Save Design'
+                            )}
                         </Button>
                     </form>
                 </CardContent>
@@ -296,8 +350,8 @@ export function BuildingConfigForm() {
                 <HistoryControls
                     canUndo={canUndo()}
                     canRedo={canRedo()}
-                    onUndo={undo}
-                    onRedo={redo}
+                    onUndo={handleUndo}
+                    onRedo={handleRedo}
                     history={getStateHistory()}
                     onStateSelect={handleStateSelect}
                     onCompare={handleCompare}
@@ -307,6 +361,10 @@ export function BuildingConfigForm() {
 
                 {showComparison && comparisonData && (
                     <StateComparison {...comparisonData} />
+                )}
+
+                {currentState && (
+                    <BuildingComparison buildings={[currentState]} />
                 )}
             </div>
         </div>

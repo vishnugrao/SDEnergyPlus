@@ -1,6 +1,6 @@
 'use client';
 
-import { Building, BarChart2, Settings, GitCompare } from 'lucide-react';
+import { Building, BarChart2, Settings } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { Button } from '../ui/button';
@@ -18,21 +18,9 @@ export function Sidebar() {
             <h3 className="text-sm font-medium">Navigation</h3>
             <nav className="space-y-1">
               <Button variant="ghost" className="w-full justify-start" asChild>
-                <Link href="/dashboard">
-                  <Building className="mr-2 h-4 w-4" />
-                  Buildings
-                </Link>
-              </Button>
-              <Button variant="ghost" className="w-full justify-start" asChild>
                 <Link href="/analysis">
                   <BarChart2 className="mr-2 h-4 w-4" />
                   Analysis
-                </Link>
-              </Button>
-              <Button variant="ghost" className="w-full justify-start" asChild>
-                <Link href="/compare">
-                  <GitCompare className="mr-2 h-4 w-4" />
-                  Compare Buildings
                 </Link>
               </Button>
               <Button variant="ghost" className="w-full justify-start" asChild>
@@ -42,18 +30,6 @@ export function Sidebar() {
                 </Link>
               </Button>
             </nav>
-          </div>
-          
-          <div className="space-y-2">
-            <h3 className="text-sm font-medium">Quick Actions</h3>
-            <div className="space-y-1">
-              <Button variant="outline" className="w-full justify-start">
-                New Building
-              </Button>
-              <Button variant="outline" className="w-full justify-start">
-                Compare Selected
-              </Button>
-            </div>
           </div>
         </div>
       </ScrollArea>

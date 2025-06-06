@@ -1,24 +1,32 @@
-export interface FacadeData {
-    height: number;
-    width: number;
-    wwr: number; // Window-to-wall ratio (0-1)
-    shgc: number; // Solar Heat Gain Coefficient (0-1)
-}
+import { z } from 'zod';
 
-export interface BuildingDesign {
+export const facadeSchema = z.object({
+    height: z.number().min(0),
+    width: z.number().min(0),
+    wwr: z.number().min(0).max(1),
+    shgc: z.number().min(0).max(1),
+});
+
+export const buildingSchema = z.object({
+    name: z.string().min(1),
+    facades: z.object({
+        north: facadeSchema,
+        south: facadeSchema,
+        east: facadeSchema,
+        west: facadeSchema,
+    }),
+    skylight: z.object({
+        width: z.number().min(0).optional(),
+        length: z.number().min(0).optional(),
+    }).optional(),
+});
+
+export type BuildingFormData = z.infer<typeof buildingSchema>;
+export type FacadeKey = keyof BuildingFormData['facades'];
+
+export interface BuildingDesign extends BuildingFormData {
     _id?: string;
-    buildingId?: string; // ID of the parent building for grouping designs
-    name: string;
-    facades: {
-        north: FacadeData;
-        south: FacadeData;
-        east: FacadeData;
-        west: FacadeData;
-    };
-    skylight?: {
-        width: number;
-        length: number;
-    };
+    id?: string;
     createdAt?: Date;
     updatedAt?: Date;
 }
@@ -50,4 +58,14 @@ export interface CityData {
         roof: number;
     };
     electricityRate: number; // Rs/kWh
+    temperature: {
+        summer: number;
+        winter: number;
+        monsoon: number;
+    };
+    humidity: {
+        summer: number;
+        winter: number;
+        monsoon: number;
+    };
 } 

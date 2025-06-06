@@ -6,146 +6,169 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell } from 'recharts';
 import { BuildingDesign } from '../types/building';
-import { calculateDailyEnergyProfile, CITY_DATA } from '@/lib/heat-gain-utils';
 
-const CITIES = Object.keys(CITY_DATA) as Array<keyof typeof CITY_DATA>;
-const SEASONS = ['Summer', 'Winter', 'Monsoon'] as const;
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+
+interface AnalysisResult {
+  buildingDesignId: string;
+  name: string;
+  city: string;
+  heatGain: {
+    north: number;
+    south: number;
+    east: number;
+    west: number;
+    total: number;
+    hourly: {
+      hour: number;
+      north: number;
+      south: number;
+      east: number;
+      west: number;
+    }[];
+  };
+  coolingCost: number;
+  energyConsumption: number;
+  createdAt: string;
+}
+
+interface BuildingWithAnalysis extends BuildingDesign {
+  analysis: AnalysisResult;
+}
 
 interface BuildingComparisonProps {
-  buildings: BuildingDesign[];
+  buildings: BuildingWithAnalysis[];
 }
 
 export function BuildingComparison({ buildings }: BuildingComparisonProps) {
-  const [selectedCity, setSelectedCity] = useState<typeof CITIES[number]>(CITIES[0]);
-  const [selectedSeason, setSelectedSeason] = useState<typeof SEASONS[number]>(SEASONS[0]);
+  const [selectedBuilding, setSelectedBuilding] = useState(buildings[0]?.name || '');
 
-  // --- Data Preparation ---
-  // 1. Hourly energy/cost profile for each building
-  const buildingProfiles = buildings.map((building) => ({
-    ...building,
-    profile: calculateDailyEnergyProfile(building, selectedCity, selectedSeason),
+  if (buildings.length < 2) {
+    return null;
+  }
+
+  // Prepare data for different visualizations
+  const facadeHeatGainData = buildings.map(building => ({
+    name: building.name,
+    hourlyData: building.analysis.heatGain.hourly.map(hour => ({
+      hour: hour.hour,
+      north: hour.north,
+      south: hour.south,
+      east: hour.east,
+      west: hour.west
+    }))
   }));
 
-  // 2. Facade-wise heat gain (sum over day)
-  const facadeHeatGainData = buildings.map((building, idx) => {
-    const radiation = CITY_DATA[selectedCity].radiation;
-    const sunlightProfile = Array.from({ length: 24 }, (_, hour) => {
-      // Use the same sunlight profile as in calculateDailyEnergyProfile
-      return require('@/lib/heat-gain-utils').getSunlightProfileForSeason(selectedSeason)[hour];
-    });
-    const facades = ['north', 'south', 'east', 'west'] as const;
-    const heatGain: Record<string, number> = {};
-    facades.forEach(facade => {
-      let sum = 0;
-      for (let hour = 0; hour < 24; hour++) {
-        const area = building.facades[facade].width * building.facades[facade].height * building.facades[facade].wwr;
-        const shgc = building.facades[facade].shgc;
-        const rad = radiation[facade] * sunlightProfile[hour];
-        sum += area * shgc * rad;
-      }
-      heatGain[facade] = sum;
-    });
-    return { name: building.name, ...heatGain };
-  });
+  const selectedBuildingData = facadeHeatGainData.find(building => building.name === selectedBuilding)?.hourlyData || [];
 
-  // 3. Cooling cost (sum over day)
-  const coolingCostData = buildingProfiles.map((b) => ({
-    name: b.name,
-    totalCost: b.profile.reduce((sum, h) => sum + h.cost, 0),
+  const cityRankingData = buildings.map(building => ({
+    name: building.name,
+    totalEnergy: building.analysis.energyConsumption,
+    totalCost: building.analysis.coolingCost
   }));
 
-  // 4. City-wise ranking (by total energy/cost)
-  // For this city, rank buildings by total energy/cost
-  const cityRankingData = buildingProfiles.map((b) => ({
-    name: b.name,
-    totalEnergy: b.profile.reduce((sum, h) => sum + h.energyConsumed, 0),
-    totalCost: b.profile.reduce((sum, h) => sum + h.cost, 0),
-  })).sort((a, b) => a.totalCost - b.totalCost);
-
-  // 5. Comparative summary (table data)
   const comparativeSummary = cityRankingData;
 
-  // --- Colors ---
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#A259F7', '#F76E6E'];
-
   return (
-    <div className="space-y-8">
-      <div className="flex items-center space-x-4">
-        <Select value={selectedCity} onValueChange={(value: typeof CITIES[number]) => setSelectedCity(value)}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Select city" />
-          </SelectTrigger>
-          <SelectContent>
-            {CITIES.map((city) => (
-              <SelectItem key={city} value={city}>{city}</SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        <Select value={selectedSeason} onValueChange={(value: typeof SEASONS[number]) => setSelectedSeason(value)}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Select season" />
-          </SelectTrigger>
-          <SelectContent>
-            {SEASONS.map((season) => (
-              <SelectItem key={season} value={season}>{season}</SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
+    <div className="space-y-6">
       <Tabs defaultValue="heat-gain" className="w-full">
         <TabsList className="mb-4">
           <TabsTrigger value="heat-gain">Heat Gain (per Facade)</TabsTrigger>
           <TabsTrigger value="cooling-cost">Cooling Cost</TabsTrigger>
           <TabsTrigger value="city-ranking">City-wise Ranking</TabsTrigger>
           <TabsTrigger value="comparative">Comparative Analysis</TabsTrigger>
+          <TabsTrigger value="energy-metrics">Energy Metrics</TabsTrigger>
         </TabsList>
+
         {/* Heat Gain Tab */}
         <TabsContent value="heat-gain">
           <Card>
             <CardHeader>
-              <CardTitle>Daily Heat Gain per Facade</CardTitle>
+              <div className="flex justify-between items-center">
+                <CardTitle>Daily Heat Gain per Facade</CardTitle>
+                <Select value={selectedBuilding} onValueChange={setSelectedBuilding}>
+                  <SelectTrigger className="w-[200px]">
+                    <SelectValue placeholder="Select building" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {buildings.map((building) => (
+                      <SelectItem key={building.name} value={building.name}>
+                        {building.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
             </CardHeader>
             <CardContent>
               <div className="h-[600px]">
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={facadeHeatGainData} margin={{ top: 40, right: 40, left: 40, bottom: 40 }}>
+                  <LineChart data={selectedBuildingData} margin={{ top: 40, right: 40, left: 40, bottom: 40 }}>
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
+                    <XAxis 
+                      dataKey="hour" 
+                      domain={[0, 23]}
+                      tickCount={24}
+                      tickFormatter={(value) => `${value}:00`}
+                      label={{ value: 'Hour of Day', position: 'insideBottom', offset: -5 }}
+                    />
+                    <YAxis 
+                      tickFormatter={(value: number) => value.toFixed(3)}
+                      domain={[
+                        (dataMin: number) => Math.floor(dataMin * 0.9),
+                        (dataMax: number) => Math.ceil(dataMax * 1.1)
+                      ]}
+                      label={{ value: 'Heat Gain (kWh)', angle: -90, position: 'insideLeft' }}
+                      width={80}
+                    />
+                    <Tooltip 
+                      formatter={(value: number) => value.toFixed(3)}
+                      labelFormatter={(label) => `Hour: ${label}:00`}
+                    />
                     <Legend />
                     {['north', 'south', 'east', 'west'].map((facade, idx) => (
-                      <Bar key={facade} dataKey={facade} fill={COLORS[idx % COLORS.length]} name={`${facade.charAt(0).toUpperCase() + facade.slice(1)} Facade`} />
+                      <Line
+                        key={facade}
+                        type="monotone"
+                        dataKey={facade}
+                        stroke={COLORS[idx % COLORS.length]}
+                        name={`${facade.charAt(0).toUpperCase() + facade.slice(1)} Facade`}
+                        strokeWidth={2}
+                        dot={{ r: 2 }}
+                        activeDot={{ r: 4 }}
+                      />
                     ))}
-                  </BarChart>
+                  </LineChart>
                 </ResponsiveContainer>
               </div>
             </CardContent>
           </Card>
         </TabsContent>
+
         {/* Cooling Cost Tab */}
         <TabsContent value="cooling-cost">
           <Card>
             <CardHeader>
-              <CardTitle>Total Cooling Cost</CardTitle>
+              <CardTitle>Daily Cooling Cost Analysis</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="h-[600px]">
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={coolingCostData} margin={{ top: 40, right: 40, left: 40, bottom: 40 }}>
+                  <LineChart data={cityRankingData} margin={{ top: 40, right: 40, left: 40, bottom: 40 }}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
+                    <YAxis tickFormatter={(value: number) => `₹${value.toFixed(1)}`} />
+                    <Tooltip formatter={(value: number) => `₹${value.toFixed(1)}`} />
                     <Legend />
-                    <Bar dataKey="totalCost" fill={COLORS[0]} name="Cooling Cost (₹)" />
-                  </BarChart>
+                    <Line type="monotone" dataKey="totalCost" stroke={COLORS[0]} name="Cooling Cost" />
+                  </LineChart>
                 </ResponsiveContainer>
               </div>
             </CardContent>
           </Card>
         </TabsContent>
-        {/* City-wise Ranking Tab */}
+
+        {/* City Ranking Tab */}
         <TabsContent value="city-ranking">
           <Card>
             <CardHeader>
@@ -157,8 +180,8 @@ export function BuildingComparison({ buildings }: BuildingComparisonProps) {
                   <BarChart data={cityRankingData} margin={{ top: 40, right: 40, left: 40, bottom: 40 }}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
+                    <YAxis tickFormatter={(value: number) => value.toFixed(1)} />
+                    <Tooltip formatter={(value: number) => value.toFixed(1)} />
                     <Legend />
                     <Bar dataKey="totalEnergy" fill={COLORS[1]} name="Total Energy (kWh)" />
                     <Bar dataKey="totalCost" fill={COLORS[2]} name="Total Cost (₹)" />
@@ -168,6 +191,7 @@ export function BuildingComparison({ buildings }: BuildingComparisonProps) {
             </CardContent>
           </Card>
         </TabsContent>
+
         {/* Comparative Analysis Tab */}
         <TabsContent value="comparative">
           <Card>
@@ -188,12 +212,58 @@ export function BuildingComparison({ buildings }: BuildingComparisonProps) {
                     {comparativeSummary.map((row, idx) => (
                       <tr key={row.name} className={idx % 2 === 0 ? 'bg-muted' : ''}>
                         <td className="px-4 py-2 border font-medium">{row.name}</td>
-                        <td className="px-4 py-2 border">{row.totalEnergy.toFixed(2)}</td>
-                        <td className="px-4 py-2 border">{row.totalCost.toFixed(2)}</td>
+                        <td className="px-4 py-2 border">{row.totalEnergy.toFixed(1)}</td>
+                        <td className="px-4 py-2 border">{row.totalCost.toFixed(1)}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Energy Metrics Tab */}
+        <TabsContent value="energy-metrics">
+          <Card>
+            <CardHeader>
+              <CardTitle>Energy Performance Metrics</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {buildings.map((building) => {
+                  const maxEnergy = Math.max(...buildings.map(b => b.analysis.energyConsumption));
+                  
+                  return (
+                    <Card key={building._id}>
+                      <CardHeader>
+                        <CardTitle>{building.name}</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="space-y-4">
+                          <div>
+                            <h4 className="text-sm font-medium text-muted-foreground">Energy Efficiency</h4>
+                            <p className="text-2xl font-bold">
+                              {((1 - building.analysis.energyConsumption / maxEnergy) * 100).toFixed(1)}%
+                            </p>
+                          </div>
+                          <div>
+                            <h4 className="text-sm font-medium text-muted-foreground">Peak Demand</h4>
+                            <p className="text-2xl font-bold">
+                              {(building.analysis.energyConsumption * 0.2).toFixed(1)} kW
+                            </p>
+                          </div>
+                          <div>
+                            <h4 className="text-sm font-medium text-muted-foreground">Carbon Emissions</h4>
+                            <p className="text-2xl font-bold">
+                              {(building.analysis.energyConsumption * 0.82).toFixed(1)} kg CO₂
+                            </p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
               </div>
             </CardContent>
           </Card>
