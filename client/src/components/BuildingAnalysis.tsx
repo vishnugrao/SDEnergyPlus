@@ -29,6 +29,7 @@ import {
 import { calculateDailyEnergyProfile } from '@/lib/heat-gain-utils';
 import { formatNumber } from '@/utils/formatNumber';
 import { BuildingPairwiseComparison } from './BuildingPairwiseComparison';
+import { PDFExport } from '@/components/PDFExport';
 
 const VALID_CITIES = ['Bangalore', 'Mumbai', 'Kolkata', 'Delhi'];
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
@@ -246,6 +247,8 @@ export function BuildingAnalysis({ buildingIds }: BuildingAnalysisProps) {
                     </SelectContent>
                 </Select>
             </div>
+
+            <PDFExport buildingIds={buildingIds} city={selectedCity} />
 
             <Tabs defaultValue="heat-gain" value={activeTab} onValueChange={setActiveTab}>
                 <TabsList>

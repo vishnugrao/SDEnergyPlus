@@ -2025,3 +2025,365 @@
 {"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:13:49.764Z"}
 {"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:13:49.764Z"}
 {"level":"info","message":"Analysis completed for 3 buildings","timestamp":"2025-06-06T08:13:49.764Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Bangalore","timestamp":"2025-06-06T08:14:14.334Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Mumbai","timestamp":"2025-06-06T08:14:14.335Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Kolkata","timestamp":"2025-06-06T08:14:14.336Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Delhi","timestamp":"2025-06-06T08:14:14.338Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:14:14.552Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:14:14.554Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:14:14.560Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:14:14.573Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:14:14.774Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:14:14.774Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:14:14.774Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:14:14.775Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:14:14.775Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:14:14.775Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Mumbai","timestamp":"2025-06-06T08:14:14.777Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Bangalore","timestamp":"2025-06-06T08:14:14.778Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:14:14.796Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:14:14.796Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:14:14.796Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Delhi","timestamp":"2025-06-06T08:14:14.799Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:14:14.812Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:14:14.812Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:14:14.812Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Kolkata","timestamp":"2025-06-06T08:14:14.814Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:14:14.995Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:14:14.997Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:14:15.021Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:14:15.051Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:14:15.218Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:14:15.218Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:14:15.218Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:14:15.221Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:14:15.221Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:14:15.221Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:14:15.244Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:14:15.244Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:14:15.244Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:14:15.289Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:14:15.289Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:14:15.289Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Bangalore","timestamp":"2025-06-06T08:16:45.014Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Mumbai","timestamp":"2025-06-06T08:16:45.014Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Kolkata","timestamp":"2025-06-06T08:16:45.015Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Delhi","timestamp":"2025-06-06T08:16:45.015Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:16:45.232Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:16:45.232Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:16:45.237Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:16:45.245Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:45.447Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:45.447Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:16:45.447Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:45.447Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:45.447Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:16:45.447Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Mumbai","timestamp":"2025-06-06T08:16:45.448Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Bangalore","timestamp":"2025-06-06T08:16:45.448Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:45.459Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:45.459Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:16:45.459Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Delhi","timestamp":"2025-06-06T08:16:45.460Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:45.475Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:45.475Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:16:45.475Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Kolkata","timestamp":"2025-06-06T08:16:45.476Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:16:45.666Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:16:45.668Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:16:45.687Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:16:45.710Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:45.884Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:45.885Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:16:45.885Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:45.887Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:45.887Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:16:45.887Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:45.912Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:45.913Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:16:45.913Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:45.951Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:45.952Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:16:45.952Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Bangalore","timestamp":"2025-06-06T08:16:47.410Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Mumbai","timestamp":"2025-06-06T08:16:47.411Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Kolkata","timestamp":"2025-06-06T08:16:47.412Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Delhi","timestamp":"2025-06-06T08:16:47.412Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:16:47.641Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:16:47.641Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:16:47.642Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:16:47.648Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:47.856Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:47.857Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:16:47.857Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:47.860Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:47.860Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:16:47.860Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:47.865Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:47.865Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:16:47.865Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:47.878Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:47.878Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:16:47.878Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Bangalore","timestamp":"2025-06-06T08:16:48.076Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Mumbai","timestamp":"2025-06-06T08:16:48.076Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Kolkata","timestamp":"2025-06-06T08:16:48.076Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Delhi","timestamp":"2025-06-06T08:16:48.076Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:16:48.298Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:16:48.299Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:16:48.305Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:16:48.314Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:48.524Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:48.524Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:16:48.524Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:48.526Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:48.526Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:16:48.526Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:48.535Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:48.535Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:16:48.535Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:48.552Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:48.552Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:16:48.552Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Bangalore","timestamp":"2025-06-06T08:16:54.175Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Mumbai","timestamp":"2025-06-06T08:16:54.177Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Kolkata","timestamp":"2025-06-06T08:16:54.179Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Delhi","timestamp":"2025-06-06T08:16:54.180Z"}
+{"level":"info","message":"Found building designs: 3","timestamp":"2025-06-06T08:16:54.401Z"}
+{"level":"info","message":"Found building designs: 3","timestamp":"2025-06-06T08:16:54.402Z"}
+{"level":"info","message":"Found building designs: 3","timestamp":"2025-06-06T08:16:54.404Z"}
+{"level":"info","message":"Found building designs: 3","timestamp":"2025-06-06T08:16:54.406Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:41:20","timestamp":"2025-06-06T08:16:54.619Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:54.620Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:54.620Z"}
+{"level":"info","message":"Analysis completed for 3 buildings","timestamp":"2025-06-06T08:16:54.620Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Delhi","timestamp":"2025-06-06T08:16:54.622Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:41:20","timestamp":"2025-06-06T08:16:54.625Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:54.625Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:54.625Z"}
+{"level":"info","message":"Analysis completed for 3 buildings","timestamp":"2025-06-06T08:16:54.625Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Mumbai","timestamp":"2025-06-06T08:16:54.627Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:41:20","timestamp":"2025-06-06T08:16:54.628Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:54.628Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:54.628Z"}
+{"level":"info","message":"Analysis completed for 3 buildings","timestamp":"2025-06-06T08:16:54.628Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Kolkata","timestamp":"2025-06-06T08:16:54.629Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:41:20","timestamp":"2025-06-06T08:16:54.633Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:54.634Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:54.634Z"}
+{"level":"info","message":"Analysis completed for 3 buildings","timestamp":"2025-06-06T08:16:54.634Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Bangalore","timestamp":"2025-06-06T08:16:54.635Z"}
+{"level":"info","message":"Found building designs: 3","timestamp":"2025-06-06T08:16:54.841Z"}
+{"level":"info","message":"Found building designs: 3","timestamp":"2025-06-06T08:16:54.849Z"}
+{"level":"info","message":"Found building designs: 3","timestamp":"2025-06-06T08:16:54.853Z"}
+{"level":"info","message":"Found building designs: 3","timestamp":"2025-06-06T08:16:54.866Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:41:20","timestamp":"2025-06-06T08:16:55.059Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:55.059Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:55.059Z"}
+{"level":"info","message":"Analysis completed for 3 buildings","timestamp":"2025-06-06T08:16:55.059Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:41:20","timestamp":"2025-06-06T08:16:55.070Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:55.070Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:55.070Z"}
+{"level":"info","message":"Analysis completed for 3 buildings","timestamp":"2025-06-06T08:16:55.070Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:41:20","timestamp":"2025-06-06T08:16:55.078Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:55.078Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:55.078Z"}
+{"level":"info","message":"Analysis completed for 3 buildings","timestamp":"2025-06-06T08:16:55.078Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:41:20","timestamp":"2025-06-06T08:16:55.096Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:55.096Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:55.096Z"}
+{"level":"info","message":"Analysis completed for 3 buildings","timestamp":"2025-06-06T08:16:55.096Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Bangalore","timestamp":"2025-06-06T08:16:56.129Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Mumbai","timestamp":"2025-06-06T08:16:56.129Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Kolkata","timestamp":"2025-06-06T08:16:56.129Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Delhi","timestamp":"2025-06-06T08:16:56.129Z"}
+{"level":"info","message":"Found building designs: 3","timestamp":"2025-06-06T08:16:56.349Z"}
+{"level":"info","message":"Found building designs: 3","timestamp":"2025-06-06T08:16:56.353Z"}
+{"level":"info","message":"Found building designs: 3","timestamp":"2025-06-06T08:16:56.354Z"}
+{"level":"info","message":"Found building designs: 3","timestamp":"2025-06-06T08:16:56.357Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:41:20","timestamp":"2025-06-06T08:16:56.582Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:56.582Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:56.582Z"}
+{"level":"info","message":"Analysis completed for 3 buildings","timestamp":"2025-06-06T08:16:56.582Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:41:20","timestamp":"2025-06-06T08:16:56.584Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:56.584Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:56.584Z"}
+{"level":"info","message":"Analysis completed for 3 buildings","timestamp":"2025-06-06T08:16:56.584Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:41:20","timestamp":"2025-06-06T08:16:56.587Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:56.587Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:56.587Z"}
+{"level":"info","message":"Analysis completed for 3 buildings","timestamp":"2025-06-06T08:16:56.587Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:41:20","timestamp":"2025-06-06T08:16:56.592Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:16:56.592Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:16:56.592Z"}
+{"level":"info","message":"Analysis completed for 3 buildings","timestamp":"2025-06-06T08:16:56.592Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Bangalore","timestamp":"2025-06-06T08:16:59.618Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Mumbai","timestamp":"2025-06-06T08:16:59.619Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Kolkata","timestamp":"2025-06-06T08:16:59.619Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Delhi","timestamp":"2025-06-06T08:16:59.619Z"}
+{"level":"info","message":"Found building designs: 3","timestamp":"2025-06-06T08:16:59.837Z"}
+{"level":"info","message":"Found building designs: 3","timestamp":"2025-06-06T08:16:59.841Z"}
+{"level":"info","message":"Found building designs: 3","timestamp":"2025-06-06T08:16:59.842Z"}
+{"level":"info","message":"Found building designs: 3","timestamp":"2025-06-06T08:16:59.848Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:41:20","timestamp":"2025-06-06T08:17:00.058Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:17:00.058Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:17:00.058Z"}
+{"level":"info","message":"Analysis completed for 3 buildings","timestamp":"2025-06-06T08:17:00.058Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:41:20","timestamp":"2025-06-06T08:17:00.064Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:17:00.065Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:17:00.065Z"}
+{"level":"info","message":"Analysis completed for 3 buildings","timestamp":"2025-06-06T08:17:00.065Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:41:20","timestamp":"2025-06-06T08:17:00.067Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:17:00.067Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:17:00.067Z"}
+{"level":"info","message":"Analysis completed for 3 buildings","timestamp":"2025-06-06T08:17:00.068Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:41:20","timestamp":"2025-06-06T08:17:00.076Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:17:00.076Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:17:00.076Z"}
+{"level":"info","message":"Analysis completed for 3 buildings","timestamp":"2025-06-06T08:17:00.076Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Bangalore","timestamp":"2025-06-06T08:17:02.879Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Mumbai","timestamp":"2025-06-06T08:17:02.880Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Kolkata","timestamp":"2025-06-06T08:17:02.881Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Delhi","timestamp":"2025-06-06T08:17:02.882Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:17:03.098Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:17:03.100Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:17:03.103Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:17:03.118Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:17:03.318Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:17:03.318Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:17:03.318Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:17:03.319Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:17:03.319Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:17:03.319Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Delhi","timestamp":"2025-06-06T08:17:03.320Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Mumbai","timestamp":"2025-06-06T08:17:03.322Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:17:03.335Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:17:03.335Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:17:03.335Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Bangalore","timestamp":"2025-06-06T08:17:03.337Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:17:03.356Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:17:03.357Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:17:03.357Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Kolkata","timestamp":"2025-06-06T08:17:03.359Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:17:03.539Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:17:03.541Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:17:03.560Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:17:03.596Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:17:03.757Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:17:03.758Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:17:03.758Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:17:03.759Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:17:03.759Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:17:03.760Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:17:03.782Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:17:03.782Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:17:03.783Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:17:03.833Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:17:03.833Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:17:03.833Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Bangalore","timestamp":"2025-06-06T08:17:08.895Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Mumbai","timestamp":"2025-06-06T08:17:08.896Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Kolkata","timestamp":"2025-06-06T08:17:08.896Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Delhi","timestamp":"2025-06-06T08:17:08.896Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:17:09.115Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:17:09.115Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:17:09.120Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:17:09.131Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:17:09.335Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:17:09.335Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:17:09.335Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:17:09.335Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:17:09.335Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:17:09.335Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:17:09.342Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:17:09.342Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:17:09.342Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:17:09.369Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:17:09.369Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:17:09.369Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Bangalore","timestamp":"2025-06-06T08:18:39.202Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Mumbai","timestamp":"2025-06-06T08:18:39.204Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Kolkata","timestamp":"2025-06-06T08:18:39.206Z"}
+{"level":"info","message":"Fetching analysis for buildings in city: Delhi","timestamp":"2025-06-06T08:18:39.207Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:18:39.424Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:18:39.426Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:18:39.427Z"}
+{"level":"info","message":"Found building designs: 2","timestamp":"2025-06-06T08:18:39.440Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:18:39.642Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:18:39.643Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:18:39.643Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:18:39.645Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:18:39.645Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:18:39.645Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:18:39.651Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:18:39.651Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:18:39.651Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 09:45:45","timestamp":"2025-06-06T08:18:39.679Z"}
+{"level":"info","message":"Retrieved analysis result from cache for building Commercial Building 10:01:53","timestamp":"2025-06-06T08:18:39.679Z"}
+{"level":"info","message":"Analysis completed for 2 buildings","timestamp":"2025-06-06T08:18:39.679Z"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-06T08:19:14.947Z"}
+{"level":"info","message":"Starting database initialization...","timestamp":"2025-06-06T08:19:17.530Z"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-06T08:19:29.108Z"}
+{"level":"info","message":"Starting database initialization...","timestamp":"2025-06-06T08:19:31.895Z"}
+{"level":"info","message":"Starting database initialization...","timestamp":"2025-06-06T08:19:31.899Z"}
+{"level":"info","message":"Found 4 existing cities in database","timestamp":"2025-06-06T08:19:32.113Z"}
+{"0":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Bangalore","solarRadiationKeys":["north","south","east","west","roof"]},"1":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Mumbai","solarRadiationKeys":["north","south","east","west","roof"]},"2":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Kolkata","solarRadiationKeys":["north","south","east","west","roof"]},"3":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Delhi","solarRadiationKeys":["north","south","east","west","roof"]},"level":"info","message":"Existing city data structure:","timestamp":"2025-06-06T08:19:32.114Z"}
+{"level":"info","message":"Found 4 existing cities in database","timestamp":"2025-06-06T08:19:33.476Z"}
+{"0":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Bangalore","solarRadiationKeys":["north","south","east","west","roof"]},"1":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Mumbai","solarRadiationKeys":["north","south","east","west","roof"]},"2":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Kolkata","solarRadiationKeys":["north","south","east","west","roof"]},"3":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Delhi","solarRadiationKeys":["north","south","east","west","roof"]},"level":"info","message":"Existing city data structure:","timestamp":"2025-06-06T08:19:33.477Z"}
+{"level":"info","message":"Server is running on port 5050","timestamp":"2025-06-06T08:19:33.479Z"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-06T08:20:00.120Z"}
+{"level":"info","message":"Starting database initialization...","timestamp":"2025-06-06T08:20:02.759Z"}
+{"level":"info","message":"Starting database initialization...","timestamp":"2025-06-06T08:20:02.765Z"}
+{"level":"info","message":"Found 4 existing cities in database","timestamp":"2025-06-06T08:20:02.994Z"}
+{"0":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Bangalore","solarRadiationKeys":["north","south","east","west","roof"]},"1":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Mumbai","solarRadiationKeys":["north","south","east","west","roof"]},"2":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Kolkata","solarRadiationKeys":["north","south","east","west","roof"]},"3":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Delhi","solarRadiationKeys":["north","south","east","west","roof"]},"level":"info","message":"Existing city data structure:","timestamp":"2025-06-06T08:20:02.996Z"}
+{"level":"info","message":"Found 4 existing cities in database","timestamp":"2025-06-06T08:20:04.565Z"}
+{"0":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Bangalore","solarRadiationKeys":["north","south","east","west","roof"]},"1":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Mumbai","solarRadiationKeys":["north","south","east","west","roof"]},"2":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Kolkata","solarRadiationKeys":["north","south","east","west","roof"]},"3":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Delhi","solarRadiationKeys":["north","south","east","west","roof"]},"level":"info","message":"Existing city data structure:","timestamp":"2025-06-06T08:20:04.566Z"}
+{"level":"info","message":"Server is running on port 5050","timestamp":"2025-06-06T08:20:04.569Z"}
+{"code":"model_not_found","error":{"code":"model_not_found","message":"The model `gpt-4-vision-preview` has been deprecated, learn more here: https://platform.openai.com/docs/deprecations","param":null,"type":"invalid_request_error"},"headers":{"alt-svc":"h3=\":443\"; ma=86400","cf-cache-status":"DYNAMIC","cf-ray":"94b67d102eca08b7-HYD","connection":"keep-alive","content-encoding":"gzip","content-type":"application/json; charset=utf-8","date":"Fri, 06 Jun 2025 08:20:07 GMT","server":"cloudflare","set-cookie":"__cf_bm=BWQPnR9FrngEycLTpFI_8f92uqUQGk7eAFpManVz0ls-1749198007-1.0.1.1-juFMAtUbxdcN2mINzLaQTrz0FU3Fk7hdKfYKvGj5wHDCRgHqMVYVHOeMlCbc5ZVfoBhekStGMNkDQztcrYMyc4uAt6mai7hogX6X9APcGaY; path=/; expires=Fri, 06-Jun-25 08:50:07 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None, _cfuvid=dL7mdVyjyOAIwmzzmsdRcTpCPNcxQfrpKLw9.6RKDf4-1749198007404-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None","strict-transport-security":"max-age=31536000; includeSubDomains; preload","transfer-encoding":"chunked","vary":"Origin","x-content-type-options":"nosniff","x-request-id":"req_ccc7d11340ab00d4de5b27145739692e"},"level":"error","message":"Error generating PDF: 404 The model `gpt-4-vision-preview` has been deprecated, learn more here: https://platform.openai.com/docs/deprecations","param":null,"request_id":"req_ccc7d11340ab00d4de5b27145739692e","stack":"Error: 404 The model `gpt-4-vision-preview` has been deprecated, learn more here: https://platform.openai.com/docs/deprecations\n    at APIError.generate (/Users/vishnurao/Desktop/Dev/SmarterDharma/SDEnergyPlus/server/node_modules/openai/src/error.ts:84:14)\n    at OpenAI.makeStatusError (/Users/vishnurao/Desktop/Dev/SmarterDharma/SDEnergyPlus/server/node_modules/openai/src/core.ts:462:21)\n    at OpenAI.makeRequest (/Users/vishnurao/Desktop/Dev/SmarterDharma/SDEnergyPlus/server/node_modules/openai/src/core.ts:526:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async <anonymous> (/Users/vishnurao/Desktop/Dev/SmarterDharma/SDEnergyPlus/server/routes/analysis.ts:171:28)","status":404,"timestamp":"2025-06-06T08:20:07.407Z","type":"invalid_request_error"}
+{"code":"model_not_found","error":{"code":"model_not_found","message":"The model `gpt-4-vision-preview` has been deprecated, learn more here: https://platform.openai.com/docs/deprecations","param":null,"type":"invalid_request_error"},"headers":{"alt-svc":"h3=\":443\"; ma=86400","cf-cache-status":"DYNAMIC","cf-ray":"94b67fc89c60937a-MAA","connection":"keep-alive","content-encoding":"gzip","content-type":"application/json; charset=utf-8","date":"Fri, 06 Jun 2025 08:21:58 GMT","server":"cloudflare","set-cookie":"__cf_bm=nt26Rb1nFPh7CpXMussGEc.IbS5qmRPJVOJ0T8bwT8Q-1749198118-1.0.1.1-XcWaU1A._qYV67_CUtCqohR.vnJo_3m1nU1pepVU6s0OR4dnFWecrPSgScqsyUMeBqddYFAQdhIfdYmUbFTlM1et10lsVGaVS6iVuQ3_CYo; path=/; expires=Fri, 06-Jun-25 08:51:58 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None, _cfuvid=4Q4JsQrF_RrAmTDlivtxFy2zzkLiJc9i8wpOFDuWXCA-1749198118533-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None","strict-transport-security":"max-age=31536000; includeSubDomains; preload","transfer-encoding":"chunked","vary":"Origin","x-content-type-options":"nosniff","x-request-id":"req_98296b8a154769e3cd2d77b39772ab35"},"level":"error","message":"Error generating PDF: 404 The model `gpt-4-vision-preview` has been deprecated, learn more here: https://platform.openai.com/docs/deprecations","param":null,"request_id":"req_98296b8a154769e3cd2d77b39772ab35","stack":"Error: 404 The model `gpt-4-vision-preview` has been deprecated, learn more here: https://platform.openai.com/docs/deprecations\n    at APIError.generate (/Users/vishnurao/Desktop/Dev/SmarterDharma/SDEnergyPlus/server/node_modules/openai/src/error.ts:84:14)\n    at OpenAI.makeStatusError (/Users/vishnurao/Desktop/Dev/SmarterDharma/SDEnergyPlus/server/node_modules/openai/src/core.ts:462:21)\n    at OpenAI.makeRequest (/Users/vishnurao/Desktop/Dev/SmarterDharma/SDEnergyPlus/server/node_modules/openai/src/core.ts:526:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async <anonymous> (/Users/vishnurao/Desktop/Dev/SmarterDharma/SDEnergyPlus/server/routes/analysis.ts:171:28)","status":404,"timestamp":"2025-06-06T08:21:58.569Z","type":"invalid_request_error"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-06T08:22:38.211Z"}
+{"level":"info","message":"Starting database initialization...","timestamp":"2025-06-06T08:22:40.995Z"}
+{"level":"info","message":"Starting database initialization...","timestamp":"2025-06-06T08:22:41.000Z"}
+{"level":"info","message":"Found 4 existing cities in database","timestamp":"2025-06-06T08:22:41.222Z"}
+{"0":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Bangalore","solarRadiationKeys":["north","south","east","west","roof"]},"1":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Mumbai","solarRadiationKeys":["north","south","east","west","roof"]},"2":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Kolkata","solarRadiationKeys":["north","south","east","west","roof"]},"3":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Delhi","solarRadiationKeys":["north","south","east","west","roof"]},"level":"info","message":"Existing city data structure:","timestamp":"2025-06-06T08:22:41.222Z"}
+{"level":"info","message":"Found 4 existing cities in database","timestamp":"2025-06-06T08:22:42.635Z"}
+{"0":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Bangalore","solarRadiationKeys":["north","south","east","west","roof"]},"1":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Mumbai","solarRadiationKeys":["north","south","east","west","roof"]},"2":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Kolkata","solarRadiationKeys":["north","south","east","west","roof"]},"3":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Delhi","solarRadiationKeys":["north","south","east","west","roof"]},"level":"info","message":"Existing city data structure:","timestamp":"2025-06-06T08:22:42.636Z"}
+{"level":"info","message":"Server is running on port 5050","timestamp":"2025-06-06T08:22:42.640Z"}
+{"code":"invalid_image_format","error":{"code":"invalid_image_format","message":"Invalid MIME type. Only image types are supported.","param":null,"type":"invalid_request_error"},"headers":{"access-control-expose-headers":"X-Request-ID","alt-svc":"h3=\":443\"; ma=86400","cf-cache-status":"DYNAMIC","cf-ray":"94b680ebeeb19365-MAA","connection":"keep-alive","content-length":"180","content-type":"application/json","date":"Fri, 06 Jun 2025 08:22:44 GMT","openai-organization":"user-om0xc5vox9egbxc9nl8weu45","openai-processing-ms":"19","openai-version":"2020-10-01","server":"cloudflare","set-cookie":"__cf_bm=.dSNuPA_l2dJOdDYRhaYpEIT0_JGqHsf2ndgDXIJ43w-1749198164-1.0.1.1-nIbdHOsrdMA1i4_5zMu7rB20R0zFtMcus_30gDoMqX7xpqZLGqWXxFGEACcwrkmDx2aYDjhfN8k7nbi3v8kogU2YDBpfV1T3i497mgaj6Zc; path=/; expires=Fri, 06-Jun-25 08:52:44 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None, _cfuvid=MXJSLW.L9P1rTi9nPmboFJWMA.OYbOgAwqZ0gmZXZ14-1749198164890-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None","strict-transport-security":"max-age=31536000; includeSubDomains; preload","x-content-type-options":"nosniff","x-ratelimit-limit-input-images":"50000","x-ratelimit-limit-requests":"500","x-ratelimit-limit-tokens":"30000","x-ratelimit-remaining-input-images":"49999","x-ratelimit-remaining-requests":"499","x-ratelimit-remaining-tokens":"29216","x-ratelimit-reset-input-images":"1ms","x-ratelimit-reset-requests":"120ms","x-ratelimit-reset-tokens":"1.568s","x-request-id":"req_02e9ddf5b655500d70311227463295a7"},"level":"error","message":"Error generating PDF: 400 Invalid MIME type. Only image types are supported.","param":null,"request_id":"req_02e9ddf5b655500d70311227463295a7","stack":"Error: 400 Invalid MIME type. Only image types are supported.\n    at APIError.generate (/Users/vishnurao/Desktop/Dev/SmarterDharma/SDEnergyPlus/server/node_modules/openai/src/error.ts:72:14)\n    at OpenAI.makeStatusError (/Users/vishnurao/Desktop/Dev/SmarterDharma/SDEnergyPlus/server/node_modules/openai/src/core.ts:462:21)\n    at OpenAI.makeRequest (/Users/vishnurao/Desktop/Dev/SmarterDharma/SDEnergyPlus/server/node_modules/openai/src/core.ts:526:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async <anonymous> (/Users/vishnurao/Desktop/Dev/SmarterDharma/SDEnergyPlus/server/routes/analysis.ts:171:28)","status":400,"timestamp":"2025-06-06T08:22:45.000Z","type":"invalid_request_error"}
+{"code":"invalid_image_format","error":{"code":"invalid_image_format","message":"Invalid MIME type. Only image types are supported.","param":null,"type":"invalid_request_error"},"headers":{"access-control-expose-headers":"X-Request-ID","alt-svc":"h3=\":443\"; ma=86400","cf-cache-status":"DYNAMIC","cf-ray":"94b682b6b84879d5-HYD","connection":"keep-alive","content-length":"180","content-type":"application/json","date":"Fri, 06 Jun 2025 08:23:58 GMT","openai-organization":"user-om0xc5vox9egbxc9nl8weu45","openai-processing-ms":"12","openai-version":"2020-10-01","server":"cloudflare","set-cookie":"__cf_bm=kWW30Y5Ub3qKTlq2p_rM_HJlOqFpUe._aFZwwn8JHq8-1749198238-1.0.1.1-cEusdamJ3JiO7g6NV7FQYTDCUIKvmSqmLETvw3Z.be5OFsvj7DJb2rXfU8jG79L7K3pe4FNC3zDpf3aeqmt6k2epvZiDuIU.u2_Yccckwmo; path=/; expires=Fri, 06-Jun-25 08:53:58 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None, _cfuvid=8U4odjNlIdmLUj4h4HjGqro549apA64wOYWOgqsS7o8-1749198238036-0.0.1.1-604800000; path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None","strict-transport-security":"max-age=31536000; includeSubDomains; preload","x-content-type-options":"nosniff","x-ratelimit-limit-input-images":"50000","x-ratelimit-limit-requests":"500","x-ratelimit-limit-tokens":"30000","x-ratelimit-remaining-input-images":"49999","x-ratelimit-remaining-requests":"499","x-ratelimit-remaining-tokens":"29216","x-ratelimit-reset-input-images":"1ms","x-ratelimit-reset-requests":"120ms","x-ratelimit-reset-tokens":"1.568s","x-request-id":"req_a30b8b8332efea63316a4abc9b15df21"},"level":"error","message":"Error generating PDF: 400 Invalid MIME type. Only image types are supported.","param":null,"request_id":"req_a30b8b8332efea63316a4abc9b15df21","stack":"Error: 400 Invalid MIME type. Only image types are supported.\n    at APIError.generate (/Users/vishnurao/Desktop/Dev/SmarterDharma/SDEnergyPlus/server/node_modules/openai/src/error.ts:72:14)\n    at OpenAI.makeStatusError (/Users/vishnurao/Desktop/Dev/SmarterDharma/SDEnergyPlus/server/node_modules/openai/src/core.ts:462:21)\n    at OpenAI.makeRequest (/Users/vishnurao/Desktop/Dev/SmarterDharma/SDEnergyPlus/server/node_modules/openai/src/core.ts:526:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async <anonymous> (/Users/vishnurao/Desktop/Dev/SmarterDharma/SDEnergyPlus/server/routes/analysis.ts:171:28)","status":400,"timestamp":"2025-06-06T08:23:58.031Z","type":"invalid_request_error"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-06T08:24:03.425Z"}
+{"level":"info","message":"Starting database initialization...","timestamp":"2025-06-06T08:24:06.298Z"}
+{"level":"info","message":"Starting database initialization...","timestamp":"2025-06-06T08:24:06.304Z"}
+{"level":"info","message":"Found 4 existing cities in database","timestamp":"2025-06-06T08:24:06.569Z"}
+{"0":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Bangalore","solarRadiationKeys":["north","south","east","west","roof"]},"1":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Mumbai","solarRadiationKeys":["north","south","east","west","roof"]},"2":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Kolkata","solarRadiationKeys":["north","south","east","west","roof"]},"3":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Delhi","solarRadiationKeys":["north","south","east","west","roof"]},"level":"info","message":"Existing city data structure:","timestamp":"2025-06-06T08:24:06.570Z"}
+{"level":"info","message":"Found 4 existing cities in database","timestamp":"2025-06-06T08:24:08.135Z"}
+{"0":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Bangalore","solarRadiationKeys":["north","south","east","west","roof"]},"1":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Mumbai","solarRadiationKeys":["north","south","east","west","roof"]},"2":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Kolkata","solarRadiationKeys":["north","south","east","west","roof"]},"3":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Delhi","solarRadiationKeys":["north","south","east","west","roof"]},"level":"info","message":"Existing city data structure:","timestamp":"2025-06-06T08:24:08.136Z"}
+{"level":"info","message":"Server is running on port 5050","timestamp":"2025-06-06T08:24:08.140Z"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-06T08:26:47.152Z"}
+{"level":"info","message":"Starting database initialization...","timestamp":"2025-06-06T08:26:49.840Z"}
+{"level":"info","message":"Starting database initialization...","timestamp":"2025-06-06T08:26:49.843Z"}
+{"level":"info","message":"Found 4 existing cities in database","timestamp":"2025-06-06T08:26:50.067Z"}
+{"0":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Bangalore","solarRadiationKeys":["north","south","east","west","roof"]},"1":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Mumbai","solarRadiationKeys":["north","south","east","west","roof"]},"2":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Kolkata","solarRadiationKeys":["north","south","east","west","roof"]},"3":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Delhi","solarRadiationKeys":["north","south","east","west","roof"]},"level":"info","message":"Existing city data structure:","timestamp":"2025-06-06T08:26:50.067Z"}
+{"level":"info","message":"Found 4 existing cities in database","timestamp":"2025-06-06T08:26:51.546Z"}
+{"0":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Bangalore","solarRadiationKeys":["north","south","east","west","roof"]},"1":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Mumbai","solarRadiationKeys":["north","south","east","west","roof"]},"2":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Kolkata","solarRadiationKeys":["north","south","east","west","roof"]},"3":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Delhi","solarRadiationKeys":["north","south","east","west","roof"]},"level":"info","message":"Existing city data structure:","timestamp":"2025-06-06T08:26:51.546Z"}
+{"level":"info","message":"Server is running on port 5050","timestamp":"2025-06-06T08:26:51.549Z"}
+{"level":"info","message":"Analyzing building Commercial Building 09:45:45 for city Bangalore","timestamp":"2025-06-06T08:26:54.108Z"}
+{"level":"info","message":"Calculating heat gain with city data:","timestamp":"2025-06-06T08:26:54.109Z"}
+{"level":"info","message":"Analysis completed successfully","timestamp":"2025-06-06T08:26:54.109Z"}
+{"level":"info","message":"Analyzing building Commercial Building 10:01:53 for city Bangalore","timestamp":"2025-06-06T08:26:54.109Z"}
+{"level":"info","message":"Calculating heat gain with city data:","timestamp":"2025-06-06T08:26:54.110Z"}
+{"level":"info","message":"Analysis completed successfully","timestamp":"2025-06-06T08:26:54.110Z"}
+{"level":"info","message":"Connected to Redis","timestamp":"2025-06-06T08:28:26.259Z"}
+{"level":"info","message":"Starting database initialization...","timestamp":"2025-06-06T08:28:29.009Z"}
+{"level":"info","message":"Starting database initialization...","timestamp":"2025-06-06T08:28:29.015Z"}
+{"level":"info","message":"Found 4 existing cities in database","timestamp":"2025-06-06T08:28:29.258Z"}
+{"0":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Bangalore","solarRadiationKeys":["north","south","east","west","roof"]},"1":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Mumbai","solarRadiationKeys":["north","south","east","west","roof"]},"2":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Kolkata","solarRadiationKeys":["north","south","east","west","roof"]},"3":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Delhi","solarRadiationKeys":["north","south","east","west","roof"]},"level":"info","message":"Existing city data structure:","timestamp":"2025-06-06T08:28:29.259Z"}
+{"level":"info","message":"Found 4 existing cities in database","timestamp":"2025-06-06T08:28:30.999Z"}
+{"0":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Bangalore","solarRadiationKeys":["north","south","east","west","roof"]},"1":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Mumbai","solarRadiationKeys":["north","south","east","west","roof"]},"2":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Kolkata","solarRadiationKeys":["north","south","east","west","roof"]},"3":{"hasElectricityRate":true,"hasSolarRadiation":true,"name":"Delhi","solarRadiationKeys":["north","south","east","west","roof"]},"level":"info","message":"Existing city data structure:","timestamp":"2025-06-06T08:28:31.000Z"}
+{"level":"info","message":"Server is running on port 5050","timestamp":"2025-06-06T08:28:31.004Z"}
+{"level":"info","message":"Analyzing building Commercial Building 09:45:45 for city Bangalore","timestamp":"2025-06-06T08:28:33.229Z"}
+{"level":"info","message":"Calculating heat gain with city data:","timestamp":"2025-06-06T08:28:33.229Z"}
+{"level":"info","message":"Analysis completed successfully","timestamp":"2025-06-06T08:28:33.230Z"}
+{"level":"info","message":"Analyzing building Commercial Building 10:01:53 for city Bangalore","timestamp":"2025-06-06T08:28:33.230Z"}
+{"level":"info","message":"Calculating heat gain with city data:","timestamp":"2025-06-06T08:28:33.230Z"}
+{"level":"info","message":"Analysis completed successfully","timestamp":"2025-06-06T08:28:33.230Z"}
